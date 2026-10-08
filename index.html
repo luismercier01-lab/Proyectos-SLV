@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Inicio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2310284a%27/%3E%3Cg fill=%27none%27 stroke=%27%23c9a24d%27 stroke-width=%272%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M6 12q10-5 20 0%27/%3E%3Cpath d=%27M6 18q10-5 20 0%27/%3E%3Cpath d=%27M6 24q10-5 20 0%27/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="rule"></div>
+        <h1 id="hero-title"></h1>
+        <p class="lead" id="hero-text"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="informes.html">Ver informes</a>
+          <a class="btn btn-ghost" href="campos.html">Ver campos</a>
+        </div>
+      </div>
+      <svg class="topo" viewBox="0 0 600 540" aria-hidden="true">
+        <defs>
+          <path id="blob" d="M170 95C240 25 360 30 440 85C520 140 590 215 550 305C520 370 545 440 470 490C395 535 330 470 250 490C160 510 70 455 55 360C42 280 20 200 70 150C100 120 130 130 170 95Z"/>
+        </defs>
+        <g fill="none" stroke="#10284a" stroke-width="1.2" id="topo-lines"></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section" id="areas">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Qué hacemos</div><h2>Áreas de trabajo</h2></div>
+      </div>
+      <div class="areas" id="areas-grid"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="informes">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Biblioteca</div><h2>Informes recientes</h2></div>
+        <a class="link-more" href="informes.html">Ver todos los informes</a>
+      </div>
+      <div class="rep-list" id="recent"></div>
+    </div>
+  </section>
+
+  <section class="section" id="campos">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Cartera</div><h2>Campos</h2>
+          <p>Los campos que tenemos en venta y aquellos sobre los que estamos trabajando.</p></div>
+        <a class="link-more" href="campos.html">Ver mapa completo</a>
+      </div>
+      <div class="mini-map" id="map"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="equipo">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">Equipo</div><h2>Quiénes somos</h2><p id="equipo-texto"></p></div>
+      </div>
+      <div class="team" id="team"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<script src="js/common.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "nombre": "SLV",
+  "descriptor": "Consultoría agropecuaria",
+  "email": "contacto@ejemplo.com",
+  "telefono": "",
+  "hero_titulo": "Informes técnicos y consultoría para el campo",
+  "hero_texto": "Ambientación y prescripciones, análisis satelital, evaluación de campos para compra y venta, y asesoramiento a medida. Trabajamos con datos medidos y fuentes citadas.",
+  "areas": [
+    {
+      "titulo": "Informes técnicos de campo",
+      "texto": "Caracterización de establecimientos con datos medidos: superficie productiva real, clima, agua, relieve, accesos y contexto de la zona. Cada informe responde las preguntas que plantea el cliente."
+    },
+    {
+      "titulo": "Ambientación y prescripciones",
+      "texto": "Zonificación de lotes con índices de vegetación de varias campañas y prescripciones de siembra y fertilización variable, listas para cargar en la maquinaria."
+    },
+    {
+      "titulo": "Compra y venta de campos",
+      "texto": "Evaluación previa a la compra y cartera de campos en venta, cada uno con su ficha, su mapa y su informe satelital."
+    },
+    {
+      "titulo": "Consultoría a medida",
+      "texto": "Si el tema es del campo y se puede medir o analizar, lo armamos: informes específicos a pedido, con el alcance que se acuerde."
+    }
+  ],
+  "equipo_texto": "Un equipo de tres con formación agronómica, análisis de datos satelitales y conocimiento del territorio. Este texto es de ejemplo: editalo desde el panel.",
+  "equipo": [
+    { "nombre": "Socio 1", "rol": "Agronomía y análisis satelital", "foto": "" },
+    { "nombre": "Socio 2", "rol": "Prescripciones y trabajo a campo", "foto": "" },
+    { "nombre": "Socio 3", "rol": "Administración y compra-venta", "foto": "" }
+  ]
+}

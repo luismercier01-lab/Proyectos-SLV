@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="750" fill="#e8ecf2"/>
+  <defs>
+    <path id="b" d="M600 120C780 100 960 230 990 400C1020 570 880 690 690 700C500 710 300 650 230 480C160 310 260 170 420 130C490 112 545 125 600 120Z"/>
+  </defs>
+  <g fill="none" stroke="#10284a" stroke-width="2" opacity=".28">
+    <use href="#b" transform="translate(600 410) scale(1.0) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.86) rotate(6) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.72) rotate(12) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.58) rotate(18) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.44) rotate(24) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.30) rotate(30) translate(-600 -410)"/>
+    <use href="#b" transform="translate(600 410) scale(.16) rotate(36) translate(-600 -410)"/>
+  </g>
+</svg>

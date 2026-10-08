@@ -1,0 +1,238 @@
+{
+  "campos": [
+    {
+      "id": "ejemplo-victoria-mixto",
+      "titulo": "Campo mixto cerca de Victoria",
+      "estado": "En cartera",
+      "ejemplo": true,
+      "provincia": "Entre Ríos",
+      "partido": "Victoria",
+      "localidad": "Victoria",
+      "lat": -32.62,
+      "lng": -60.15,
+      "superficie_ha": 210,
+      "uso": "Mixto",
+      "precio_usd": 1470000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado para probar el panel y el mapa.\nLote de lomadas suaves con aguada natural y casco. Agricultura y ganadería.\nEl polígono dibujado en el mapa de detalle es solo una demostración.",
+      "caracteristicas": [
+        "Aguada natural",
+        "Casco con galpón",
+        "Acceso por camino consolidado"
+      ],
+      "imagenes": [],
+      "poligono": "{\"type\":\"Polygon\",\"coordinates\":[[[-60.158,-32.627],[-60.141,-32.627],[-60.141,-32.612],[-60.158,-32.612],[-60.158,-32.627]]]}",
+      "fecha": "2026-10-01",
+      "satelital": {
+        "superficie_productiva_ha": 196,
+        "no_productiva_detalle": "Monte y laguna (ejemplo)",
+        "ambientes": {
+          "baja": 31,
+          "media": 108,
+          "alta": 57
+        },
+        "historial": [
+          {
+            "campana": "19/20",
+            "ndvi": 0.61
+          },
+          {
+            "campana": "20/21",
+            "ndvi": 0.68
+          },
+          {
+            "campana": "21/22",
+            "ndvi": 0.52
+          },
+          {
+            "campana": "22/23",
+            "ndvi": 0.57
+          },
+          {
+            "campana": "23/24",
+            "ndvi": 0.63
+          },
+          {
+            "campana": "24/25",
+            "ndvi": 0.66
+          },
+          {
+            "campana": "25/26",
+            "ndvi": 0.59
+          }
+        ],
+        "mapa": "",
+        "fecha": "2026-09-30",
+        "observaciones": "Números inventados para mostrar cómo se ve el informe."
+      }
+    },
+    {
+      "id": "ejemplo-azul-agricola",
+      "titulo": "Campo agrícola sobre ruta 226",
+      "estado": "En cartera",
+      "ejemplo": true,
+      "provincia": "Buenos Aires",
+      "partido": "Azul",
+      "localidad": "Azul",
+      "lat": -36.78,
+      "lng": -59.86,
+      "superficie_ha": 420,
+      "uso": "Agrícola",
+      "precio_usd": 3780000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.\nCampo de aptitud agrícola con frente a ruta pavimentada.",
+      "caracteristicas": [
+        "Frente a ruta pavimentada",
+        "Alambrado perimetral"
+      ],
+      "imagenes": [],
+      "lotes": [
+        { "nombre": "Casco", "hectareas": 5, "nota": "Galpón y vivienda" },
+        { "nombre": "Lote 1", "hectareas": 140, "nota": "Maíz 26/27" },
+        { "nombre": "Lote 2", "hectareas": 147, "nota": "Soja 26/27" },
+        { "nombre": "Lote 3", "hectareas": 128, "nota": "Maíz 26/27" }
+      ],
+      "poligono": "",
+      "fecha": "2026-09-20"
+    },
+    {
+      "id": "ejemplo-pehuajo-agricola",
+      "titulo": "Lotes agrícolas en Pehuajó",
+      "estado": "Reservado",
+      "ejemplo": true,
+      "provincia": "Buenos Aires",
+      "partido": "Pehuajó",
+      "localidad": "Pehuajó",
+      "lat": -35.81,
+      "lng": -61.9,
+      "superficie_ha": 640,
+      "uso": "Agrícola",
+      "precio_usd": 5120000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.",
+      "caracteristicas": [
+        "Suelos de aptitud agrícola",
+        "Silo cercano"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-09-12"
+    },
+    {
+      "id": "ejemplo-tandil-ganadero",
+      "titulo": "Campo ganadero en las sierras de Tandil",
+      "estado": "En venta",
+      "ejemplo": true,
+      "provincia": "Buenos Aires",
+      "partido": "Tandil",
+      "localidad": "Tandil",
+      "lat": -37.32,
+      "lng": -59.14,
+      "superficie_ha": 280,
+      "uso": "Ganadero",
+      "precio_usd": 2240000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.\nCría e invernada sobre pasturas naturales y sembradas.",
+      "caracteristicas": [
+        "Aguadas",
+        "Mangas y corrales",
+        "Monte de reparo"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-09-28"
+    },
+    {
+      "id": "ejemplo-tres-arroyos-agricola",
+      "titulo": "Campo agrícola en Tres Arroyos",
+      "estado": "En venta",
+      "ejemplo": true,
+      "provincia": "Buenos Aires",
+      "partido": "Tres Arroyos",
+      "localidad": "Tres Arroyos",
+      "lat": -38.37,
+      "lng": -60.28,
+      "superficie_ha": 900,
+      "uso": "Agrícola",
+      "precio_usd": 0,
+      "precio_a_consultar": true,
+      "descripcion": "Texto de ejemplo, inventado.",
+      "caracteristicas": [
+        "Planteo agrícola",
+        "Cercano a puerto"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-08-30"
+    },
+    {
+      "id": "ejemplo-gualeguaychu-ganadero",
+      "titulo": "Estancia ganadera en Gualeguaychú",
+      "estado": "En venta",
+      "ejemplo": true,
+      "provincia": "Entre Ríos",
+      "partido": "Gualeguaychú",
+      "localidad": "Gualeguaychú",
+      "lat": -33.01,
+      "lng": -58.52,
+      "superficie_ha": 350,
+      "uso": "Ganadero",
+      "precio_usd": 2100000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.",
+      "caracteristicas": [
+        "Monte nativo",
+        "Aguadas permanentes"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-09-05"
+    },
+    {
+      "id": "ejemplo-rafaela-tambo",
+      "titulo": "Tambo en la cuenca de Rafaela",
+      "estado": "En venta",
+      "ejemplo": true,
+      "provincia": "Santa Fe",
+      "partido": "Castellanos",
+      "localidad": "Rafaela",
+      "lat": -31.25,
+      "lng": -61.49,
+      "superficie_ha": 150,
+      "uso": "Tambo",
+      "precio_usd": 1650000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.",
+      "caracteristicas": [
+        "Sala de ordeñe",
+        "Riego complementario"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-09-18"
+    },
+    {
+      "id": "ejemplo-bahia-blanca-ganadero",
+      "titulo": "Campo de cría al norte de Bahía Blanca",
+      "estado": "En venta",
+      "ejemplo": true,
+      "provincia": "Buenos Aires",
+      "partido": "Bahía Blanca",
+      "localidad": "Bahía Blanca",
+      "lat": -38.5,
+      "lng": -62.3,
+      "superficie_ha": 1500,
+      "uso": "Ganadero",
+      "precio_usd": 4500000,
+      "precio_a_consultar": false,
+      "descripcion": "Texto de ejemplo, inventado.",
+      "caracteristicas": [
+        "Gran superficie",
+        "Aptitud ganadera"
+      ],
+      "imagenes": [],
+      "poligono": "",
+      "fecha": "2026-08-22"
+    }
+  ]
+}

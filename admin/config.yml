@@ -1,0 +1,203 @@
+# Configuración del panel (Sveltia CMS).
+backend:
+  name: github
+  repo: luismercier01-lab/Proyectos-SLV
+  branch: main
+
+site_url: https://luismercier01-lab.github.io/Proyectos-SLV/
+display_url: https://luismercier01-lab.github.io/Proyectos-SLV/
+logo:
+  src: ../images/placeholder.svg
+
+# Las fotos y archivos se guardan en el repo y se usan con ruta relativa.
+media_folder: images/campos
+public_folder: images/campos
+
+collections:
+  - name: contenido
+    label: Contenido
+    files:
+      # ------------------------------------------------------------- INFORMES
+      - name: informes
+        label: Informes y prescripciones
+        file: data/informes.json
+        format: json
+        fields:
+          - name: informes
+            label: Informes
+            label_singular: Informe
+            widget: list
+            summary: "{{fields.titulo}} · {{fields.tipo}} · {{fields.fecha}}"
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: "Único, sin espacios ni tildes. Ej: ambientacion-la-aurora-2026" }
+              - { name: titulo, label: Título, widget: string }
+              - name: tipo
+                label: Tipo
+                widget: select
+                options: ["Ambientación", "Prescripción", "Informe de establecimiento", "Evaluación de campo", "Análisis de suelo", "Análisis satelital", "Informe a medida", "Referencia externa"]
+                hint: "Informe de establecimiento: caracterización o informe técnico de un campo. Evaluación de campo: para comprar o vender. Referencia externa: material de terceros (INTA, papers) que guardamos como consulta."
+              - { name: estado, label: Estado del informe, widget: select, options: ["Borrador", "En revisión", "Entregado", "En seguimiento"], default: "Borrador", hint: "En seguimiento: el trabajo sigue (por ejemplo, monitoreo mensual de la campaña)." }
+              - { name: version, label: Versión, widget: string, required: false, hint: "Ej: v1, v2, v8" }
+              - { name: fecha, label: Fecha, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true, format: "YYYY-MM-DD" }
+              - { name: campo_id, label: Campo asociado, widget: relation, collection: contenido, file: campos, search_fields: ["campos.*.titulo"], value_field: "campos.*.id", display_fields: ["campos.*.titulo"], required: false, hint: "Opcional. Si el campo todavía no está cargado en Campos, dejalo vacío y completá 'Lugar'." }
+              - { name: lugar, label: Lugar, widget: string, required: false, hint: "Solo si no hay campo asociado. Ej: Bolívar, Buenos Aires" }
+              - { name: cliente, label: Cliente, widget: string, required: false }
+              - { name: campana, label: Campaña, widget: string, required: false, hint: "Ej: 25/26. Útil en prescripciones y seguimientos." }
+              - name: lotes
+                label: Lotes que abarca
+                widget: list
+                required: false
+                field: { name: lote, label: Lote, widget: string }
+                hint: "Ej: L1S, Lote 4"
+              - { name: resumen, label: Resumen (2 o 3 renglones), widget: text, required: false }
+              - name: cifras_clave
+                label: Cifras clave (3 a 5)
+                widget: list
+                required: false
+                summary: "{{fields.valor}} · {{fields.etiqueta}}"
+                hint: "Los números que resumen el informe. Se ven en una tira arriba y en el listado. Ej: 1.694 ha · medidas"
+                fields:
+                  - { name: valor, label: Valor, widget: string, hint: "Ej: 1.694 ha, 26,1, 34 %" }
+                  - { name: etiqueta, label: Qué es, widget: string, required: false, hint: "Ej: superficie medida" }
+              - name: ambientes
+                label: Superficie por ambiente
+                widget: list
+                required: false
+                summary: "{{fields.nombre}} · {{fields.hectareas}} ha"
+                hint: "Una fila por ambiente o clase. Se muestra como barra y tabla con porcentajes. 'Bajo', 'Medio' y 'Alto' salen en rojo, amarillo y verde."
+                fields:
+                  - { name: nombre, label: Ambiente, widget: string, hint: "Ej: Bajo, Medio, Alto, o 3 - Deficiente" }
+                  - { name: hectareas, label: Hectáreas, widget: number, value_type: float }
+                  - { name: color, label: Color (opcional), widget: color, required: false }
+              - name: prescripcion
+                label: Prescripción (solo si el tipo es Prescripción)
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: cultivo, label: Cultivo, widget: string, required: false }
+                  - name: dosis
+                    label: Dosis por ambiente
+                    widget: list
+                    required: false
+                    summary: "{{fields.producto}} · {{fields.ambiente}} · {{fields.dosis}}"
+                    fields:
+                      - { name: producto, label: Producto, widget: string, required: false, hint: "Ej: Semilla de maíz, Sulfato de zinc, Cloruro de potasio" }
+                      - { name: ambiente, label: Ambiente, widget: string, hint: "Ej: Bajo, Medio, Alto" }
+                      - { name: dosis, label: Dosis, widget: string, hint: "Con unidad. Ej: 70 kg/ha, 3 sem/m" }
+                      - { name: hectareas, label: Hectáreas, widget: number, value_type: float, required: false }
+                  - { name: total_insumo, label: Total de insumo, widget: string, required: false, hint: "Ej: 5,35 t de sulfato de zinc" }
+                  - { name: entrega, label: Formato de entrega, widget: select, multiple: true, required: false, options: ["KMZ", "Shapefile", "ISOXML", "CSV", "Otro"], hint: "En qué formato se entregó para cargar en la máquina." }
+                  - { name: observaciones, label: Observaciones, widget: text, required: false }
+              - { name: contenido, label: Contenido, widget: text, required: false, hint: "Para un título de sección escribí '## Título' en un renglón. Para una lista, un renglón por punto empezando con '- '. Una línea en blanco separa los párrafos. **negrita** funciona. Tablas: '| Lote | ha |' en una línea, '|---|---|' en la siguiente, y una fila por renglón." }
+              - { name: autores, label: Autores, widget: list, field: { name: autor, label: Autor, widget: string }, required: false }
+              - { name: etiquetas, label: Etiquetas, widget: list, field: { name: etiqueta, label: Etiqueta, widget: string }, required: false, hint: "Ej: NDVI, Siembra variable, Fertilización, Suelos, Agua" }
+              - { name: imagenes, label: Imágenes, widget: image, multiple: true, required: false }
+              - name: archivos
+                label: Archivos (PDF, KMZ, shapefile comprimido, planillas)
+                widget: list
+                required: false
+                summary: "{{fields.titulo}}"
+                hint: "Subí el archivo, o pegá un enlace (Drive, etc.) si pesa más de unos 25 MB."
+                fields:
+                  - { name: titulo, label: Nombre que se muestra, widget: string }
+                  - { name: archivo, label: Archivo, widget: file, media_folder: informes, public_folder: informes, required: false }
+                  - { name: url, label: Enlace (si el archivo está en Drive u otro lado), widget: string, required: false }
+              - { name: enlace, label: Enlace externo (opcional), widget: string, required: false, hint: "Por ejemplo, un informe publicado en otra página." }
+              - { name: ejemplo, label: Es un informe de ejemplo, widget: boolean, default: false, required: false, hint: "Dejalo apagado para informes reales." }
+
+      # --------------------------------------------------------------- CAMPOS
+      - name: campos
+        label: Campos
+        file: data/campos.json
+        format: json
+        fields:
+          - name: campos
+            label: Campos
+            label_singular: Campo
+            widget: list
+            summary: "{{fields.titulo}} · {{fields.superficie_ha}} ha · {{fields.estado}}"
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: "Sin espacios ni tildes y único. Ej: estancia-la-aurora-azul" }
+              - { name: titulo, label: Nombre del campo, widget: string }
+              - { name: estado, label: Estado, widget: select, options: ["En venta", "En cartera", "Reservado", "Vendido"], default: "En cartera", hint: "En venta: aparece con precio. En cartera: campo de un cliente sobre el que trabajamos (informes, prescripciones) pero que no está a la venta. Vendido: desaparece del mapa pero queda guardado." }
+              - { name: ejemplo, label: Es un campo de ejemplo, widget: boolean, default: false, required: false, hint: "Dejalo apagado para campos reales." }
+              - { name: provincia, label: Provincia, widget: string }
+              - { name: partido, label: Partido / departamento, widget: string, required: false }
+              - { name: localidad, label: Localidad más cercana, widget: string, required: false }
+              - { name: lat, label: Latitud, widget: number, value_type: float, hint: "En Google Maps: clic derecho sobre el campo y tocá las coordenadas para copiarlas. Ej: -32.62" }
+              - { name: lng, label: Longitud, widget: number, value_type: float, hint: "Ej: -60.15" }
+              - { name: superficie_ha, label: Superficie (ha), widget: number, value_type: float }
+              - { name: uso, label: Uso, widget: select, options: ["Agrícola", "Ganadero", "Mixto", "Tambo", "Forestal", "Otro"] }
+              - { name: precio_usd, label: Precio total (USD), widget: number, value_type: int, required: false }
+              - { name: precio_a_consultar, label: Mostrar "Consultar precio", widget: boolean, default: false, required: false }
+              - { name: descripcion, label: Descripción, widget: text, required: false, hint: "Una línea en blanco separa los párrafos. '## Título' y '- punto' funcionan." }
+              - { name: caracteristicas, label: Características, widget: list, field: { name: caracteristica, label: Característica, widget: string }, required: false }
+              - { name: imagenes, label: Fotos, widget: image, multiple: true, required: false, hint: "La primera es la portada. Conviene que cada una pese menos de 500 KB." }
+              - name: lotes
+                label: Detalle de lotes
+                widget: list
+                required: false
+                summary: "{{fields.nombre}} · {{fields.hectareas}} ha"
+                hint: "Opcional. Una fila por lote (y por el casco, si corresponde). Se muestra como tabla en la ficha."
+                fields:
+                  - { name: nombre, label: Lote, widget: string }
+                  - { name: hectareas, label: Hectáreas, widget: number, value_type: float, required: false }
+                  - { name: nota, label: Nota (opcional), widget: string, required: false, hint: "Ej: Maíz 25/26, ambientado" }
+              - { name: poligono, label: Polígono del campo (GeoJSON), widget: text, required: false, hint: "Opcional. Pegá el GeoJSON del lote para dibujarlo en el mapa de la ficha." }
+              - { name: fecha, label: Fecha de alta, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true, format: "YYYY-MM-DD", required: false }
+              - name: satelital
+                label: Informe satelital (opcional)
+                widget: object
+                required: false
+                collapsed: true
+                hint: "Se muestra como un bloque en la ficha. Dejalo vacío si el campo no tiene informe."
+                fields:
+                  - { name: superficie_productiva_ha, label: Superficie productiva real (ha), widget: number, value_type: float, required: false }
+                  - { name: no_productiva_detalle, label: Qué es la superficie no productiva, widget: string, required: false, hint: "Ej: Laguna 19,9 ha" }
+                  - name: ambientes
+                    label: Ambientes de productividad (ha)
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: baja, label: Ambiente bajo (ha), widget: number, value_type: float, required: false }
+                      - { name: media, label: Ambiente medio (ha), widget: number, value_type: float, required: false }
+                      - { name: alta, label: Ambiente alto (ha), widget: number, value_type: float, required: false }
+                  - name: historial
+                    label: Vigor por campaña (NDVI medio)
+                    widget: list
+                    required: false
+                    summary: "{{fields.campana}} · {{fields.ndvi}}"
+                    fields:
+                      - { name: campana, label: Campaña, widget: string, hint: "Ej: 24/25" }
+                      - { name: ndvi, label: NDVI medio (0 a 1), widget: number, value_type: float }
+                  - { name: mapa, label: Mapa de ambientes (imagen), widget: image, required: false }
+                  - { name: fecha, label: Fecha del análisis, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true, format: "YYYY-MM-DD", required: false }
+                  - { name: observaciones, label: Observaciones, widget: text, required: false }
+
+      # -------------------------------------------------------- DATOS DEL SITIO
+      - name: sitio
+        label: Datos del sitio
+        file: data/site.json
+        format: json
+        fields:
+          - { name: nombre, label: Nombre (sigla o razón social), widget: string }
+          - { name: descriptor, label: Descriptor bajo el nombre, widget: string, required: false, hint: "Ej: Consultoría agropecuaria" }
+          - { name: email, label: Email de contacto, widget: string, required: false }
+          - { name: telefono, label: Teléfono (opcional), widget: string, required: false }
+          - { name: hero_titulo, label: Título de la portada, widget: string }
+          - { name: hero_texto, label: Texto de la portada, widget: text }
+          - name: areas
+            label: Áreas de trabajo
+            widget: list
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Texto, widget: text }
+          - { name: equipo_texto, label: Texto de "Equipo", widget: text, required: false }
+          - name: equipo
+            label: Equipo
+            widget: list
+            fields:
+              - { name: nombre, label: Nombre, widget: string }
+              - { name: rol, label: Rol, widget: string, required: false }
+              - { name: foto, label: Foto (opcional), widget: image, required: false }
